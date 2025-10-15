@@ -279,7 +279,7 @@ class AsapView extends WatchUi.WatchFace {
           0,
           lastSecondData,
           fonts[10],
-          System.getClockTime().sec > 30,
+          false,
           false
         );
       }
@@ -431,9 +431,9 @@ class AsapView extends WatchUi.WatchFace {
   ) {
     var handThickness = buffHeight;
     //progress bar
-    var progress = handLength - handThickness;
+    var progress = handLength;
     if (data != null) {
-      progress = getCross(handLength - handThickness, lastData, data);
+      progress = getCross(handLength, lastData, data);
       System.println("progress " + progress);
     }
 
@@ -454,30 +454,15 @@ class AsapView extends WatchUi.WatchFace {
       dcb.fillRectangle(
         dc.getWidth() / 2,
         dcb.getHeight() / 2 - baseThickness / 2,
-        (flip?-1:1) *(startHand - dc.getHeight() / 2 + 2),
+        (flip ? -1 : 1) * (startHand - dc.getHeight() / 2 + 2),
         baseThickness
       );
     }
-    dcb.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-    dcb.fillCircle(
-      flipX(dc, startHand + handThickness / 2, flip),
-      buffHeight / 2,
-      handThickness / 2
-    );
-    dcb.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+   
+    dcb.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);   
 
-    // background
-    dcb.fillRectangle(
-      flipX(dc, startHand + handThickness / 2, flip),
-      0,
-      (flip ? -1 : 1) * (handLength - handThickness),
-      handThickness
-    );
-    dcb.fillCircle(
-      flipX(dc, startHand + handLength - handThickness / 2, flip),
-      buffHeight / 2,
-      handThickness / 2
-    );
+    drawProgress(dcb, startHand, handLength, handLength, handThickness,flip);
+
 
     dcb.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
@@ -491,23 +476,8 @@ class AsapView extends WatchUi.WatchFace {
       );
     }
 
-    // progress bar
-    dcb.fillRectangle(
-      flipX(dc, startHand + handThickness / 2, flip),
-      0,
-      (flip ? -1 : 1) * progress,
-      handThickness
-    );
-    if (
-      startHand + handThickness / 2 + progress >
-      startHand + handThickness / 2
-    ) {
-      dcb.fillCircle(
-        flipX(dc, startHand + handThickness / 2 + progress, flip),
-        buffHeight / 2,
-        handThickness / 2
-      );
-    }
+    drawProgress(dcb, startHand, handLength, progress, handThickness,flip);
+   
 
     dcb.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
 
@@ -526,25 +496,31 @@ class AsapView extends WatchUi.WatchFace {
     if (data != null && showLabel) {
       var buffText = Graphics.createBufferedBitmap({
         // create an off-screen buffer with a palette of four colors
-        :width => startHand + progress + handThickness,
+        :width => startHand + progress ,
         :height => buffHeight,
       }).get();
       var dcbText = buffText.getDc();
       dcbText.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
       dcbText.clear();
       dcbText.setColor(
-        Properties.getValue("BackgroundColor"),     
+        Properties.getValue("BackgroundColor"),
         Graphics.COLOR_TRANSPARENT
       );
       dcbText.drawText(
-        flip? - handLength / 2 +progress + handThickness :  startHand + handLength / 2,       
+        flip
+          ? -handLength / 2 + progress 
+          : startHand + handLength / 2,
         buffHeight / 2,
         font,
         data.getLabel(),
         Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
       );
 
-      dcb.drawBitmap(flip?flipX(dc, startHand + progress+handThickness ,  flip): 0, 0, buffText);
+      dcb.drawBitmap(
+        flip ? flipX(dc, startHand + progress , flip) : 0,
+        0,
+        buffText
+      );
     }
 
     return buff;
@@ -557,26 +533,97 @@ class AsapView extends WatchUi.WatchFace {
     return x;
   }
 
-  
-function getCirclePoints(x as Number, y as Number, r as Number, numPoints as Number, maxX as Number) as Lang.Array<Lang.Array<Lang.Numeric>> {
-    var points = new Lang.Array();
-    var step = 2 * Math.PI / numPoints;
+  function drawProgress(
+    dc as Dc,
+    startHand as Number,
+    handLength as Number,
+    progress as Number,
+    handThickness as Number,
+    flip as Boolean
+  ) {
+
+    dc.setAntiAlias(true);
+    // draw Half Circle
+
+    var points = getCirclePoints(
+      flipX(dc,startHand + handThickness / 2,flip),
+      dc.getHeight() / 2,
+       handThickness / 2,
+      40,
+      flip?flipX(dc,min(startHand+progress, startHand+handThickness / 2),true): 0,
+      flip?flipX(dc,0,true)
+      :
+      min(startHand+progress, startHand+handThickness / 2)
+      
+    );
+    if (points.size() >0){    
+    dc.fillPolygon(points as Array);
+    }
+
+
+    if (startHand + progress > startHand + handThickness / 2) {
+      dc.fillRectangle(flipX(dc,startHand + handThickness /2 ,flip), 0, (flip?-1:1) *min(progress -handThickness / 2, handLength - handThickness) , handThickness);
+    }
+
+
+if ( startHand + handLength - handThickness/2 < startHand + progress) {
+    points = getCirclePoints(
+      flipX(dc,startHand+ handLength - handThickness / 2,flip),
+      dc.getHeight() / 2,
+      handThickness / 2,
+      40,
+      flip?flipX(dc,startHand+progress ,true):startHand+ handLength - handThickness / 2,
+      flip?flipX(dc,startHand+ handLength - handThickness / 2,true): startHand+progress  
+         
+      
+    );
+    if (points.size() >0){    
+    dc.fillPolygon(points as Array);
+    }
+}
+
+
+    // draw Rectangle
+
+    // draw endHalfCircle
+  }
+  function getCirclePoints(
+    x as Number,
+    y as Number,
+    r as Number,
+    numPoints as Number,
+    minX as Number,
+    maxX as Number
+  ) as Lang.Array<Graphics.Point2D> {
+    var points = [];
+    var step = (2 * Math.PI) / numPoints;
 
     for (var i = 0; i < numPoints; i += 1) {
-        var angle = i * step;
-        var px = x + r * Math.cos(angle);
-        var py = y + r * Math.sin(angle);
+      var angle = i * step;
+      var px = x + r * Math.cos(angle);
+      var py = y + r * Math.sin(angle);
 
-        // Create a pair [px, py]
-        var pair = new Lang.Array();
-        pair.add(px);
-        pair.add(py);
-
-if (px <= maxX){
-        points.add(pair);
-}
+      // Create a pair [px, py]
+      if (minX <=  px .toNumber() &&  px .toNumber() <= maxX )     {        
+        points.add([px.toNumber(),py.toNumber()]);
+      }
     }
 
     return points;
-}
+  }
+
+  function max(number1 as Number, number2 as Number) {
+    if (number1 > number2) {
+      return number1;
+    } else {
+      return number2;
+    }
+  }
+  function min(number1 as Number, number2 as Number) {
+    if (number1 < number2) {
+      return number1;
+    } else {
+      return number2;
+    }
+  }
 }
