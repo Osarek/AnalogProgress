@@ -1,0 +1,7 @@
+<layout id="WatchFace">
+    <drawable class="Background" />
+
+    <!-- <bitmap id="dots" filename="images/dots_numbered.png" />
+    <bitmap id="fibonacci" filename="images/fibonacci_2.png" />
+    <bitmap id="minute" filename="images/minute.png"/> -->
+</layout>

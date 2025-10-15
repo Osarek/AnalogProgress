@@ -1,0 +1,49 @@
+<properties>
+
+    <property id="BackgroundColor" type="number">0x000000</property>
+
+
+    
+    
+    <property id="MarkColor" type="number">0xFFFFFF</property>
+    
+    <property id="minuteHandColor" type="number">0xFFFFFF</property>
+  
+    <property id="hourHandColor" type="number">0xFFFFFF</property>
+    <property id="secHandColor" type="number">0xFFFFFF</property>
+
+    <property id="dateformat" type="number">0</property>
+    <property id="secdata" type="number">31</property>
+    <property id="hourdata" type="number">33</property>
+    <property id="mindata" type="number">34</property>
+
+    <property id="hourThickness" type="number">18</property>
+    <property id="minuteThickness" type="number">18</property>
+    <property id="minuteBorderThickness" type="number">0</property>
+    <property id="minuteFontSize" type="number">24</property>
+        <property id="hourFontSize" type="number">24</property>
+
+    <property id="hourBorderThickness" type="number">0</property>
+
+    <property id="secThickness" type="number">4</property>
+    <property id="baseThickness" type="number">4</property>
+    <property id="squareTick" type="number">2</property>
+    <property id="squareFive" type="number">4</property>
+
+    
+
+   
+
+    <property id="overlayComputation" type="boolean">false</property>
+    <property id="calcMark" type="boolean">true</property>
+   
+
+
+    
+
+
+    <!-- END COMMON -->
+    
+
+    
+</properties>

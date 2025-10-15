@@ -1,0 +1,425 @@
+<settings>
+
+
+  <!-- <group id="groupgolors" title="@Strings.colors"> -->
+  <setting propertyKey="@Properties.BackgroundColor" title="🖍️ Background">
+    <settingConfig type="list">
+  <!-- Grey scale first -->
+  <listEntry value="0x000000">Black</listEntry>
+  <listEntry value="0x666666">Dark Grey</listEntry>
+  <listEntry value="0x8B4513">Brown</listEntry>
+  <listEntry value="0xAAAAAA">Light Grey</listEntry>
+  <listEntry value="0xC0C0C0">Silver</listEntry>
+  <listEntry value="0xFFFFFF">White</listEntry>
+ <!-- Red tones -->
+  <listEntry value="0xE40303">Red</listEntry>
+  <listEntry value="0xDC143C">Crimson</listEntry>
+
+  <!-- Orange tones -->
+  <listEntry value="0xFF8C00">Orange</listEntry>
+  <listEntry value="0xFFA500">Orange (Alt)</listEntry>
+  <listEntry value="0xFFD700">Gold</listEntry>
+
+  <!-- Yellow tones -->
+  <listEntry value="0xFFED00">Yellow</listEntry>
+
+  <!-- Green tones -->
+  <listEntry value="0x008026">Green</listEntry>
+  <listEntry value="0x808000">Olive</listEntry>
+  <listEntry value="0x2E8B57">Sea Green</listEntry>
+  <!-- Cyan / Teal -->
+  <listEntry value="0x00FFFF">Cyan</listEntry>
+  <listEntry value="0x008080">Teal</listEntry>
+  <listEntry value="0x66CCFF">Light Blue</listEntry>
+  <!-- Blue tones -->
+  <listEntry value="0x24408E">Dark Blue</listEntry>
+  <listEntry value="0x0000FF">Blue</listEntry>
+  <!-- Purple tones -->
+  <listEntry value="0x732982">Purple</listEntry>
+  <listEntry value="0x800080">Purple (Alt)</listEntry>
+  <listEntry value="0x4B0082">Indigo</listEntry>
+  <!-- Pink -->
+  <listEntry value="0xF5A9B8">Pink</listEntry>
+</settingConfig>
+
+  </setting>
+
+
+  <setting propertyKey="@Properties.MarkColor" title="🖍️ Marks">
+    <settingConfig type="list">
+      <listEntry value="0x000001">None</listEntry>
+       <!-- Grey scale first -->
+  <listEntry value="0x000000">Black</listEntry>
+  <listEntry value="0x666666">Dark Grey</listEntry>
+  <listEntry value="0x8B4513">Brown</listEntry>
+  <listEntry value="0xAAAAAA">Light Grey</listEntry>
+  <listEntry value="0xC0C0C0">Silver</listEntry>
+  <listEntry value="0xFFFFFF">White</listEntry>
+ <!-- Red tones -->
+  <listEntry value="0xE40303">Red</listEntry>
+  <listEntry value="0xDC143C">Crimson</listEntry>
+
+  <!-- Orange tones -->
+  <listEntry value="0xFF8C00">Orange</listEntry>
+  <listEntry value="0xFFA500">Orange (Alt)</listEntry>
+  <listEntry value="0xFFD700">Gold</listEntry>
+
+  <!-- Yellow tones -->
+  <listEntry value="0xFFED00">Yellow</listEntry>
+
+  <!-- Green tones -->
+  <listEntry value="0x008026">Green</listEntry>
+  <listEntry value="0x808000">Olive</listEntry>
+  <listEntry value="0x2E8B57">Sea Green</listEntry>
+  <!-- Cyan / Teal -->
+  <listEntry value="0x00FFFF">Cyan</listEntry>
+  <listEntry value="0x008080">Teal</listEntry>
+  <listEntry value="0x66CCFF">Light Blue</listEntry>
+  <!-- Blue tones -->
+  <listEntry value="0x24408E">Dark Blue</listEntry>
+  <listEntry value="0x0000FF">Blue</listEntry>
+  <!-- Purple tones -->
+  <listEntry value="0x732982">Purple</listEntry>
+  <listEntry value="0x800080">Purple (Alt)</listEntry>
+  <listEntry value="0x4B0082">Indigo</listEntry>
+  <!-- Pink -->
+  <listEntry value="0xF5A9B8">Pink</listEntry>
+
+    </settingConfig>
+  </setting>
+
+
+  <setting propertyKey="@Properties.hourHandColor" title="🖍️ Hours  ">
+    <settingConfig type="list">
+      <listEntry value="0x000001">None</listEntry>
+
+        <!-- Grey scale first -->
+  <listEntry value="0x000000">Black</listEntry>
+  <listEntry value="0x666666">Dark Grey</listEntry>
+  <listEntry value="0x8B4513">Brown</listEntry>
+  <listEntry value="0xAAAAAA">Light Grey</listEntry>
+  <listEntry value="0xC0C0C0">Silver</listEntry>
+  <listEntry value="0xFFFFFF">White</listEntry>
+ <!-- Red tones -->
+  <listEntry value="0xE40303">Red</listEntry>
+  <listEntry value="0xDC143C">Crimson</listEntry>
+
+  <!-- Orange tones -->
+  <listEntry value="0xFF8C00">Orange</listEntry>
+  <listEntry value="0xFFA500">Orange (Alt)</listEntry>
+  <listEntry value="0xFFD700">Gold</listEntry>
+
+  <!-- Yellow tones -->
+  <listEntry value="0xFFED00">Yellow</listEntry>
+
+  <!-- Green tones -->
+  <listEntry value="0x008026">Green</listEntry>
+  <listEntry value="0x808000">Olive</listEntry>
+  <listEntry value="0x2E8B57">Sea Green</listEntry>
+  <!-- Cyan / Teal -->
+  <listEntry value="0x00FFFF">Cyan</listEntry>
+  <listEntry value="0x008080">Teal</listEntry>
+  <listEntry value="0x66CCFF">Light Blue</listEntry>
+  <!-- Blue tones -->
+  <listEntry value="0x24408E">Dark Blue</listEntry>
+  <listEntry value="0x0000FF">Blue</listEntry>
+  <!-- Purple tones -->
+  <listEntry value="0x732982">Purple</listEntry>
+  <listEntry value="0x800080">Purple (Alt)</listEntry>
+  <listEntry value="0x4B0082">Indigo</listEntry>
+  <!-- Pink -->
+  <listEntry value="0xF5A9B8">Pink</listEntry>
+
+    </settingConfig>
+  </setting>
+
+
+  <setting propertyKey="@Properties.minuteHandColor" title="🖍️ Minutes ">
+    <settingConfig type="list">
+      <listEntry value="0x000001">none</listEntry>
+
+        <!-- Grey scale first -->
+  <listEntry value="0x000000">Black</listEntry>
+  <listEntry value="0x666666">Dark Grey</listEntry>
+  <listEntry value="0x8B4513">Brown</listEntry>
+  <listEntry value="0xAAAAAA">Light Grey</listEntry>
+  <listEntry value="0xC0C0C0">Silver</listEntry>
+  <listEntry value="0xFFFFFF">White</listEntry>
+ <!-- Red tones -->
+  <listEntry value="0xE40303">Red</listEntry>
+  <listEntry value="0xDC143C">Crimson</listEntry>
+
+  <!-- Orange tones -->
+  <listEntry value="0xFF8C00">Orange</listEntry>
+  <listEntry value="0xFFA500">Orange (Alt)</listEntry>
+  <listEntry value="0xFFD700">Gold</listEntry>
+
+  <!-- Yellow tones -->
+  <listEntry value="0xFFED00">Yellow</listEntry>
+
+  <!-- Green tones -->
+  <listEntry value="0x008026">Green</listEntry>
+  <listEntry value="0x808000">Olive</listEntry>
+  <listEntry value="0x2E8B57">Sea Green</listEntry>
+  <!-- Cyan / Teal -->
+  <listEntry value="0x00FFFF">Cyan</listEntry>
+  <listEntry value="0x008080">Teal</listEntry>
+  <listEntry value="0x66CCFF">Light Blue</listEntry>
+  <!-- Blue tones -->
+  <listEntry value="0x24408E">Dark Blue</listEntry>
+  <listEntry value="0x0000FF">Blue</listEntry>
+  <!-- Purple tones -->
+  <listEntry value="0x732982">Purple</listEntry>
+  <listEntry value="0x800080">Purple (Alt)</listEntry>
+  <listEntry value="0x4B0082">Indigo</listEntry>
+  <!-- Pink -->
+  <listEntry value="0xF5A9B8">Pink</listEntry>
+
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.secHandColor" title="🖍️ Seconds  ">
+    <settingConfig type="list">
+      <listEntry value="0x000001">None</listEntry>
+
+        <!-- Grey scale first -->
+  <listEntry value="0x000000">Black</listEntry>
+  <listEntry value="0x666666">Dark Grey</listEntry>
+  <listEntry value="0x8B4513">Brown</listEntry>
+  <listEntry value="0xAAAAAA">Light Grey</listEntry>
+  <listEntry value="0xC0C0C0">Silver</listEntry>
+  <listEntry value="0xFFFFFF">White</listEntry>
+ <!-- Red tones -->
+  <listEntry value="0xE40303">Red</listEntry>
+  <listEntry value="0xDC143C">Crimson</listEntry>
+
+  <!-- Orange tones -->
+  <listEntry value="0xFF8C00">Orange</listEntry>
+  <listEntry value="0xFFA500">Orange (Alt)</listEntry>
+  <listEntry value="0xFFD700">Gold</listEntry>
+
+  <!-- Yellow tones -->
+  <listEntry value="0xFFED00">Yellow</listEntry>
+
+  <!-- Green tones -->
+  <listEntry value="0x008026">Green</listEntry>
+  <listEntry value="0x808000">Olive</listEntry>
+  <listEntry value="0x2E8B57">Sea Green</listEntry>
+  <!-- Cyan / Teal -->
+  <listEntry value="0x00FFFF">Cyan</listEntry>
+  <listEntry value="0x008080">Teal</listEntry>
+  <listEntry value="0x66CCFF">Light Blue</listEntry>
+  <!-- Blue tones -->
+  <listEntry value="0x24408E">Dark Blue</listEntry>
+  <listEntry value="0x0000FF">Blue</listEntry>
+  <!-- Purple tones -->
+  <listEntry value="0x732982">Purple</listEntry>
+  <listEntry value="0x800080">Purple (Alt)</listEntry>
+  <listEntry value="0x4B0082">Indigo</listEntry>
+  <!-- Pink -->
+  <listEntry value="0xF5A9B8">Pink</listEntry>
+
+    </settingConfig>
+  </setting>
+
+
+  <!-- </group> -->
+
+  <setting propertyKey="@Properties.dateformat" title="📆 Date format">
+    <settingConfig type="list">
+      <listEntry value="0">DD/MM</listEntry>
+      <listEntry value="1">MM/DD</listEntry>
+    </settingConfig>
+  </setting>
+
+
+  <setting propertyKey="@Properties.minuteThickness" title="Minutes thinkness">
+    <settingConfig type="list">
+      <listEntry value="6">6px</listEntry>
+      <listEntry value="8">8px</listEntry>
+      <listEntry value="10">10px</listEntry>
+      <listEntry value="12">12px</listEntry>
+      <listEntry value="14">14px</listEntry>
+      <listEntry value="16">16px</listEntry>
+      <listEntry value="18">18px</listEntry>
+    </settingConfig>
+  </setting>
+
+     <!-- <setting propertyKey="@Properties.minuteBorderThickness" title="Minute border thickness">
+    <settingConfig type="list">
+      <listEntry value="0">0px</listEntry>
+      <listEntry value="1">1px</listEntry>
+      <listEntry value="2">2px</listEntry>
+      <listEntry value="3">3px</listEntry>
+      <listEntry value="4">4px</listEntry>
+    </settingConfig>
+  </setting> -->
+
+    <setting propertyKey="@Properties.minuteFontSize" title="Minutes font size">
+    <settingConfig type="list">
+      <listEntry value="10">10x</listEntry>
+      <listEntry value="16">16px</listEntry>
+      <listEntry value="20">20px</listEntry>
+      <listEntry value="22">22px</listEntry>
+      <listEntry value="24">24px</listEntry>
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.hourThickness" title="Hours thinkness">
+    <settingConfig type="list">
+      <listEntry value="6">6px</listEntry>
+      <listEntry value="8">8px</listEntry>
+      <listEntry value="10">10px</listEntry>
+      <listEntry value="12">12px</listEntry>
+      <listEntry value="14">14px</listEntry>
+      <listEntry value="16">16px</listEntry>
+      <listEntry value="18">18px</listEntry>
+    </settingConfig>
+  </setting>
+      <!-- <setting propertyKey="@Properties.hourBorderThickness" title="Hour border thickness">
+    <settingConfig type="list">
+      <listEntry value="0">0px</listEntry>
+      <listEntry value="1">1px</listEntry>
+      <listEntry value="2">2px</listEntry>
+      <listEntry value="3">3px</listEntry>
+      <listEntry value="4">4px</listEntry>
+    </settingConfig>
+  </setting> -->
+
+      <setting propertyKey="@Properties.hourFontSize" title="Hours font size">
+    <settingConfig type="list">
+      <listEntry value="10">10x</listEntry>
+      <listEntry value="16">16px</listEntry>
+      <listEntry value="20">20px</listEntry>
+      <listEntry value="22">22px</listEntry>
+      <listEntry value="24">24px</listEntry>
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.secThickness" title="Seconds hand thickness">
+    <settingConfig type="list">
+      <listEntry value="4">4px</listEntry>
+      <listEntry value="6">6px</listEntry>
+      <listEntry value="8">8px</listEntry>
+      <listEntry value="10">10px</listEntry>
+    </settingConfig>
+  </setting>
+ 
+  <setting propertyKey="@Properties.baseThickness" title="Base thickness">
+    <settingConfig type="list">
+      <listEntry value="4">4px</listEntry>
+      <listEntry value="6">6px</listEntry>
+      <listEntry value="8">8px</listEntry>
+      <listEntry value="10">10px</listEntry>
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.squareTick" title="Tick 1 minutes">
+    <settingConfig type="list">
+      <listEntry value="0">none</listEntry>
+      <listEntry value="2">2px</listEntry>
+      <listEntry value="4">4px</listEntry>
+      <listEntry value="6">6px</listEntry>
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.squareFive" title="Tick 5 minutes">
+    <settingConfig type="list">
+      <listEntry value="0">none</listEntry>
+
+      <listEntry value="2">2px</listEntry>
+      <listEntry value="4">4px</listEntry>
+      <listEntry value="6">6px</listEntry>
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.hourdata" title="Progress in Hour hand">
+    <settingConfig type="list">
+       <listEntry value="0">Empty</listEntry>
+      <listEntry value="-1"> === Data / Time ===</listEntry>
+
+      <listEntry value="31">Seconds</listEntry>
+      <listEntry value="33">Minutes</listEntry>
+      <listEntry value="34">Hours 12</listEntry>
+      <listEntry value="35">Hours 24</listEntry>
+
+      <listEntry value="-2"> === Health ===</listEntry>
+      <listEntry value="1">Steps</listEntry>
+      
+      <listEntry value="2">Heart Rate (50-180)</listEntry>
+      <listEntry value="4">SPo² (70-100)</listEntry>
+      <listEntry value="102">Stress (0-100)</listEntry>
+      <listEntry value="103">Time to recovery (0h-30h)</listEntry>
+     
+      <listEntry value="-4"> === System ===</listEntry>
+      <listEntry value="3">Battery in %</listEntry>
+    
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.mindata" title="Progress in minutes hand">
+    <settingConfig type="list">
+        <listEntry value="0">Empty</listEntry>
+      <listEntry value="-1"> === Data / Time ===</listEntry>
+
+      <listEntry value="31">Seconds</listEntry>
+      <listEntry value="33">Minutes</listEntry>
+      <listEntry value="34">Hours 12</listEntry>
+      <listEntry value="35">Hours 24</listEntry>
+
+      <listEntry value="-2"> === Health ===</listEntry>
+      <listEntry value="1">Steps</listEntry>
+      
+      <listEntry value="2">Heart Rate (50-180)</listEntry>
+      <listEntry value="4">SPo² (70-100)</listEntry>
+      <listEntry value="102">Stress (0-100)</listEntry>
+      <listEntry value="103">Time to recovery (0h-30h)</listEntry>
+     
+      <listEntry value="-4"> === System ===</listEntry>
+      <listEntry value="3">Battery in %</listEntry>
+    
+    </settingConfig>
+  </setting>
+
+  <setting propertyKey="@Properties.secdata" title="Progress in seconds hand">
+    <settingConfig type="list">
+      <listEntry value="0">Empty</listEntry>
+      <listEntry value="-1"> === Data / Time ===</listEntry>
+
+      <listEntry value="31">Seconds</listEntry>
+      <listEntry value="33">Minutes</listEntry>
+      <listEntry value="34">Hours 12</listEntry>
+      <listEntry value="35">Hours 24</listEntry>
+
+      <listEntry value="-2"> === Health ===</listEntry>
+      <listEntry value="1">Steps</listEntry>
+      
+      <listEntry value="2">Heart Rate (50-180)</listEntry>
+      <listEntry value="4">SPo² (70-100)</listEntry>
+      <listEntry value="102">Stress (0-100)</listEntry>
+      <listEntry value="103">Time to recovery (0h-30h)</listEntry>
+     
+      <listEntry value="-4"> === System ===</listEntry>
+      <listEntry value="3">Battery in %</listEntry>
+    
+    </settingConfig>
+  </setting>
+
+
+  <!-- </group> -->
+
+
+  <!-- <group id="groupDatas" title="@Strings.datas"> -->
+
+
+  <setting propertyKey="@Properties.overlayComputation"
+    title="show computation time in center of screen">
+    <settingConfig type="boolean" />
+  </setting>
+
+  <setting propertyKey="@Properties.calcMark"
+    title="calcMark">
+    <settingConfig type="boolean" />
+  </setting>
+
+</settings>

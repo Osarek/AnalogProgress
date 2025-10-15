@@ -1,0 +1,87 @@
+<drawables>
+   <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+   <!-- <bitmap id="fibonacci" filename="images/fibonacci_2.png" packingFormat="png"/> -->
+   
+   <bitmap id="minute_white" filename="images/minute_white.png" packingFormat="png" />
+   <bitmap id="sec_white" filename="images/sec_white.png" packingFormat="png" />
+   
+   <bitmap id="hour_white" filename="images/hour_white.png" packingFormat="png" />
+
+
+   <bitmap id="mark_1min" filename="images/mark_1min.png" packingFormat="png" />
+    <bitmap id="mark_5min" filename="images/mark_5min.png" packingFormat="png" />
+   <bitmap id="mark_mix" filename="images/mark_mix.png" packingFormat="png" />
+
+
+    <bitmap id="battery" filename="images/sidetext/battery.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="o2" filename="images/sidetext/o2.png" automaticPalette="false" packingFormat="png" />
+    <bitmap id="step" filename="images/sidetext/step.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="temperature" filename="images/sidetext/temperature.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="phone_on" filename="images/sidetext/phone_on.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="phone_off" filename="images/sidetext/phone_off.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="heart" filename="images/sidetext/heart.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="stair_up" filename="images/sidetext/STRUP.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="calories" filename="images/sidetext/FLAME.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="stress" filename="images/sidetext/stress.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="activeminutes" filename="images/sidetext/activeminutes.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="recoverytime" filename="images/sidetext/recoverytime.png" automaticPalette="false"
+        packingFormat="png" />    
+        <bitmap id="bodybat" filename="images/sidetext/bodybat.png" automaticPalette="false"
+        packingFormat="png" />
+                <bitmap id="running" filename="images/sidetext/running.png" automaticPalette="false"
+        packingFormat="png" />
+          <bitmap id="swimming" filename="images/sidetext/swimming.png" automaticPalette="false"
+        packingFormat="png" />
+         <bitmap id="cycling" filename="images/sidetext/cycling.png" automaticPalette="false"
+        packingFormat="png" />
+          <bitmap id="sport1" filename="images/sidetext/sport1.png" automaticPalette="false"
+        packingFormat="png" />
+            <bitmap id="sport2" filename="images/sidetext/sport2.png" automaticPalette="false"
+        packingFormat="png" />
+        
+   
+
+    <bitmap id="big_clouds" filename="images/sidetext/weather/big_clouds.png"
+        automaticPalette="false" packingFormat="png" />
+    <bitmap id="moon" filename="images/sidetext/weather/moon.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="moonclouds" filename="images/sidetext/weather/moonclouds.png"
+        automaticPalette="false" packingFormat="png" />
+    <bitmap id="moonrain" filename="images/sidetext/weather/moonrain.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="rain" filename="images/sidetext/weather/rain.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="small_clouds" filename="images/sidetext/weather/small_clouds.png"
+        automaticPalette="false" packingFormat="png" />
+    <bitmap id="snow" filename="images/sidetext/weather/snow.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="sunny" filename="images/sidetext/weather/sun.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="suncloud" filename="images/sidetext/weather/suncloud.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="sunrain" filename="images/sidetext/weather/sunrain.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="thunder" filename="images/sidetext/weather/thunder.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="fog" filename="images/sidetext/weather/fog.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="haize" filename="images/sidetext/weather/haize.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="sunset" filename="images/sidetext/weather/sunset.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="sunrise" filename="images/sidetext/weather/sunrise.png" automaticPalette="false"
+        packingFormat="png" />
+    <bitmap id="sunrise_sunset" filename="images/sidetext/weather/sunrise-sunset.png"
+        automaticPalette="false" packingFormat="png" />
+
+</drawables>
