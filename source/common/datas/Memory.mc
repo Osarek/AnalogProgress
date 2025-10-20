@@ -4,7 +4,7 @@ class Memory extends Datas {
     static const CODE=901;
 
   function initialize() {
-    Datas.initialize(null, "MEMU");
+    Datas.initialize(null, "MEMU","Mem Usage");
   }
 
   function getString() as String {
@@ -19,7 +19,7 @@ class MemoryUsed extends Datas {
     static const CODE=903;
 
   function initialize() {
-    Datas.initialize(null, "MEM");
+    Datas.initialize(null, "MEM","Mem Used");
   }
 
   function getString() as String {
@@ -35,7 +35,7 @@ class MemoryUsedPercent extends Datas {
     static const CODE=902;
 
   function initialize() {
-    Datas.initialize(null, "MEM");
+    Datas.initialize(null, "MEM","Mem %");
   }
 
   function getString() as String {

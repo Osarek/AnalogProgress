@@ -1,7 +1,7 @@
 class Steps extends Datas {
   static const CODE = 1;
   function initialize() {
-    Datas.initialize(Rez.Drawables.step, "STEPS");
+    Datas.initialize(Rez.Drawables.step, "STP","STEPS");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -41,7 +41,7 @@ class Steps extends Datas {
 class HeartRate extends Datas {
   static const CODE = 2;
   function initialize() {
-    Datas.initialize(Rez.Drawables.heart, "HR");
+    Datas.initialize(Rez.Drawables.heart, "HR","Heart Rate");
   }
 
   function canBeBuffered() as $.Toybox.Lang.Boolean {
@@ -80,7 +80,7 @@ class HeartRate extends Datas {
 class SPO2 extends Datas {
   static const CODE = 4;
   function initialize() {
-    Datas.initialize(Rez.Drawables.o2, "SPO2");
+    Datas.initialize(Rez.Drawables.o2, "Ox","Pulse Ox");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -116,7 +116,7 @@ class SPO2 extends Datas {
 class FloorClimbedDay extends Datas {
   static const CODE = 100;
   function initialize() {
-    Datas.initialize(Rez.Drawables.stair_up, "FL UP");
+    Datas.initialize(Rez.Drawables.stair_up, "FL UP","Floors Up");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -129,7 +129,7 @@ class FloorClimbedDay extends Datas {
 class FloorClimbedDayGoal extends Datas {
   static const CODE = 101;
   function initialize() {
-    Datas.initialize(Rez.Drawables.stair_up, "FL UP");
+    Datas.initialize(Rez.Drawables.stair_up, "FL UP","Floors Up");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -148,7 +148,7 @@ class FloorClimbedDayGoal extends Datas {
 class StressScore extends Datas {
   static const CODE = 102;
   function initialize() {
-    Datas.initialize(Rez.Drawables.stress, "STRS");
+    Datas.initialize(Rez.Drawables.stress, "STRS","Stress");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -178,7 +178,7 @@ class StressScore extends Datas {
 class TimeToRecovery extends Datas {
   static const CODE = 103;
   function initialize() {
-    Datas.initialize(Rez.Drawables.recoverytime, "TTR");
+    Datas.initialize(Rez.Drawables.recoverytime, "RECTIME","Rec time");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -215,7 +215,7 @@ class TimeToRecovery extends Datas {
 class ActiveMinuteDay extends Datas {
   static const CODE = 105;
   function initialize() {
-    Datas.initialize(Rez.Drawables.activeminutes, "AMD");
+    Datas.initialize(Rez.Drawables.activeminutes, "AMD","Int. Min. Day");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -229,7 +229,7 @@ class ActiveMinuteDay extends Datas {
 class ActiveMinuteWeek extends Datas {
   static const CODE = 106;
   function initialize() {
-    Datas.initialize(Rez.Drawables.activeminutes, "AMW");
+    Datas.initialize(Rez.Drawables.activeminutes, "AMW","Int. Min. Wk");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -242,7 +242,7 @@ class ActiveMinuteWeek extends Datas {
 class ActiveMinuteWeekGoal extends Datas {
   static const CODE = 107;
   function initialize() {
-    Datas.initialize(Rez.Drawables.activeminutes, "AMW");
+    Datas.initialize(Rez.Drawables.activeminutes, "AMW","Int. Min. Goal");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -261,7 +261,7 @@ class ActiveMinuteWeekGoal extends Datas {
 class Calories extends Datas {
   static const CODE = 108;
   function initialize() {
-    Datas.initialize(Rez.Drawables.calories, "CAL");
+    Datas.initialize(Rez.Drawables.calories, "CAL","Calories");
   }
 
   function getString() as $.Toybox.Lang.String {
@@ -275,7 +275,7 @@ class Calories extends Datas {
 class BodyBat extends Datas {
   static const CODE = 109;
   function initialize() {
-    Datas.initialize(Rez.Drawables.bodybat, "bbat");
+    Datas.initialize(Rez.Drawables.bodybat, "bbat" , "Body Bat");
   }
 
   function getString() as $.Toybox.Lang.String {

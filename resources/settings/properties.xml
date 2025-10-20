@@ -21,7 +21,7 @@
     <property id="minuteThickness" type="number">18</property>
     <property id="minuteBorderThickness" type="number">0</property>
     <property id="minuteFontSize" type="number">24</property>
-        <property id="hourFontSize" type="number">24</property>
+    <property id="hourFontSize" type="number">24</property>
 
     <property id="hourBorderThickness" type="number">0</property>
 
@@ -29,6 +29,18 @@
     <property id="baseThickness" type="number">4</property>
     <property id="squareTick" type="number">2</property>
     <property id="squareFive" type="number">4</property>
+
+     <property id="dataHourLabelMode" type="number">0</property>
+     <property id="dataMinLabelMode" type="number">0</property>
+     <property id="dataMinLabelCusto" type="string"></property>
+     <property id="dataHourLabelCusto" type="string"></property>
+
+         <property id="SwitchMode" type="number">0</property>
+
+     
+     
+    
+    
 
     
 

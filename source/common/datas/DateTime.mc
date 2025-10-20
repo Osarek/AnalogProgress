@@ -7,7 +7,7 @@ class Date extends Datas {
   static const MMDD = 1;
 
   function initialize() {
-    Datas.initialize(null, "");
+    Datas.initialize(null, "","");
   }
   function prependIcon() {
     return false;

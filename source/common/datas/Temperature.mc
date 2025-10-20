@@ -4,7 +4,7 @@ class Temperature extends Datas {
   static const CODE = 5;
 
   function initialize() {
-    Datas.initialize(Rez.Drawables.temperature, "TEMP");
+    Datas.initialize(Rez.Drawables.temperature, "TEMP","Temperature");
   }
 
   function getString() as $.Toybox.Lang.String {

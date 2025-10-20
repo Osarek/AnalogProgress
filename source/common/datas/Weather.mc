@@ -7,7 +7,7 @@ class WeatherData extends Temperature {
 
   function initialize() {
     Temperature.initialize();
-    Datas.initialize(Rez.Drawables.temperature, "TODO");
+    Datas.initialize(Rez.Drawables.temperature, "WHTR","Weather");
   }
   var text;
 

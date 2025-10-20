@@ -1,7 +1,7 @@
 class SunriseSunset extends Datas {
   static const CODE = 54;
   function initialize() {
-    Datas.initialize(Rez.Drawables.sunrise_sunset, "SUN");
+    Datas.initialize(Rez.Drawables.sunrise_sunset, "SUN","SunRise/Set");
   }
   function prependIcon() {
     return false;

@@ -23,7 +23,7 @@ class AsapView extends WatchUi.WatchFace {
   var mark;
   var fonts = {};
 
-  var hourbuf, minutebuf, secondbuf;
+  var hourbuf, minutebuf, secondbuf, hourBuffText, minuteBuffText;
   var lastHourData, lastMinuteData, lastSecondData;
   //
   const DDMM = 0;
@@ -34,7 +34,9 @@ class AsapView extends WatchUi.WatchFace {
   function loadProperties() as Void {
     mark = null;
     minutebuf = null;
+    minuteBuffText = null;
     hourbuf = null;
+    hourBuffText = null;
     secondbuf = null;
 
     //    sec = Application.loadResource(Rez.Drawables.sec_white) as BitmapResource;
@@ -44,9 +46,9 @@ class AsapView extends WatchUi.WatchFace {
     // minute =
     //   Application.loadResource(Rez.Drawables.minute_white) as BitmapResource;
 
-    dataMin = Factory.CreateData(Properties.getValue("mindata"));
-    dataHour = Factory.CreateData(Properties.getValue("hourdata"));
-    dataSec = Factory.CreateData(Properties.getValue("secdata"));
+    dataMin = Factory.CreateData(Properties.getValue("mindata") as Number);
+    dataHour = Factory.CreateData(Properties.getValue("hourdata") as Number);
+    dataSec = Factory.CreateData(Properties.getValue("secdata") as Number);
     fonts[10] = Application.loadResource(Rez.Fonts.courier_10);
     fonts[16] = Application.loadResource(Rez.Fonts.courier_16);
     fonts[20] = Application.loadResource(Rez.Fonts.courier_20);
@@ -100,6 +102,9 @@ class AsapView extends WatchUi.WatchFace {
   var lastHourFlip = false;
   var lastMinuteFlip = false;
 
+  var tickModeHour = false;
+  var tickModeMin = false;
+
   // Load your resources here
   function onLayout(dc as Dc) as Void {
     setLayout(Rez.Layouts.WatchFace(dc));
@@ -116,7 +121,6 @@ class AsapView extends WatchUi.WatchFace {
       mark = createMark(dc);
       // }
     }
-    var c = new Common();
     var start = System.getTimer();
 
     // System.println(fib);
@@ -147,8 +151,8 @@ class AsapView extends WatchUi.WatchFace {
 
     xform = new AffineTransform();
     if (
-      (System.getClockTime().hour < 12 && System.getClockTime().hour > 6) ||
-      System.getClockTime().hour > 18
+      (System.getClockTime().hour < 12 && System.getClockTime().hour >= 6) ||
+      System.getClockTime().hour >= 18
     ) {
       hourFlip = true;
       angleHour -= 180;
@@ -156,12 +160,45 @@ class AsapView extends WatchUi.WatchFace {
     xform.rotate(Math.toRadians(angleHour));
 
     xformMin = new AffineTransform();
-    if (System.getClockTime().min > 30) {
+    if (System.getClockTime().min >= 30) {
       minuteFlip = true;
       angleMin -= 180;
     }
 
     xformMin.rotate(Math.toRadians(angleMin));
+
+    var AltModHour = 0;
+    var AltModMin = 0;
+    if (
+      Properties.getValue("SwitchMode") != 0 &&
+      System.getClockTime().sec % Properties.getValue("SwitchMode") == 0
+    ) {
+      minuteBuffText = null;
+      hourBuffText = null;
+
+      tickModeMin = !tickModeMin;
+      tickModeHour = !tickModeHour;
+
+      if (Properties.getValue("dataHourLabelMode") == 1) {
+        if (tickModeHour) {
+          AltModHour = 1;
+        }
+      } else if (Properties.getValue("dataHourLabelMode") == 2) {
+        if (tickModeHour) {
+          AltModHour = -1;
+        }
+      }
+
+      if (Properties.getValue("dataMinLabelMode") == 1) {
+        if (tickModeMin) {
+          AltModMin = 1;
+        }
+      } else if (Properties.getValue("dataMinLabelMode") == 2) {
+        if (tickModeMin) {
+          AltModMin = -1;
+        }
+      }
+    }
 
     //MINUTES
 
@@ -195,14 +232,35 @@ class AsapView extends WatchUi.WatchFace {
           handLength,
           minuteBorderThickness,
           lastMinuteData,
+          minuteFlip
+        );
+      }
+
+      if (minuteBuffText == null || lastMinuteFlip != minuteFlip) {
+        var mode =
+          (Properties.getValue("dataMinLabelMode") as Number) + AltModMin;
+        System.println("min:" + mode);
+        minuteBuffText = createBuffedText(
+          dc,
+          minuteThickness,
+          dataMin,
+          startMinute,
+          handLength,
+          minuteBorderThickness,
+          lastMinuteData,
           fonts[Properties.getValue("minuteFontSize")],
           minuteFlip,
-          true
+          mode,
+          Properties.getValue("dataMinLabelCusto")
         );
       }
       lastMinuteFlip = minuteFlip;
 
       dc.drawBitmap2(minXY[0], minXY[1], minutebuf, {
+        :tintColor => minuteHandColor,
+        :transform => xformMin,
+      });
+      dc.drawBitmap2(minXY[0], minXY[1], minuteBuffText, {
         :tintColor => minuteHandColor,
         :transform => xformMin,
       });
@@ -234,14 +292,38 @@ class AsapView extends WatchUi.WatchFace {
           handLength,
           hourBorderThickness,
           lastHourData,
-          fonts[Properties.getValue("hourFontSize")],
-          hourFlip,
-          true
+          hourFlip
         );
       }
+
+      if (hourBuffText == null || lastHourFlip != hourFlip) {
+        var mode =
+          (Properties.getValue("dataHourLabelMode") as Number) + AltModHour;
+        System.println("hour:" + mode);
+
+        hourBuffText = createBuffedText(
+          dc,
+          hourThickness,
+          dataHour,
+          startHour,
+          handLength,
+          hourBorderThickness,
+          lastHourData,
+          fonts[Properties.getValue("hourFontSize")],
+          hourFlip,
+          mode,
+          Properties.getValue("dataHourLabelCusto")
+        );
+      }
+
       lastHourFlip = hourFlip;
 
       dc.drawBitmap2(hourXY[0], hourXY[1], hourbuf, {
+        :tintColor => hourHandColor,
+        :transform => xform,
+      });
+
+      dc.drawBitmap2(hourXY[0], hourXY[1], hourBuffText, {
         :tintColor => hourHandColor,
         :transform => xform,
       });
@@ -278,8 +360,6 @@ class AsapView extends WatchUi.WatchFace {
           secondsLength,
           0,
           lastSecondData,
-          fonts[10],
-          false,
           false
         );
       }
@@ -413,8 +493,82 @@ class AsapView extends WatchUi.WatchFace {
         }
       }
     }
-
     return mark;
+  }
+
+  function createBuffedText(
+    dc as Dc,
+    buffHeight as Number,
+    data as Datas?,
+    startHand as Number,
+    handLength as Number,
+    borderThickness as Number,
+    lastData as Number,
+    font,
+    flip as Boolean,
+    labelMode as Number,
+    labelCusto as String
+  ) {
+    var progress = handLength;
+    if (data != null) {
+      progress = getCross(handLength, lastData, data);
+      System.println("progress " + progress);
+    }
+    var buff = Graphics.createBufferedBitmap({
+      // create an off-screen buffer with a palette of four colors
+      :width => dc.getWidth(),
+      :height => buffHeight,
+    }).get();
+
+    var dcb = buff.getDc();
+    dcb.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+    dcb.clear();
+    dcb.setPenWidth(1);
+
+    if (data != null && labelMode != 0) {
+      var text = labelCusto;
+      if (labelMode == 1 && labelCusto.length() == 0) {
+        text = data.getLabel();
+      } else if (labelMode == 2) {
+        text = data.getNumber();
+      }
+      dcb.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+      dcb.drawText(
+        flipX(dc, startHand + handLength / 2, flip),
+        buffHeight / 2,
+        font,
+        text,
+        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+      );
+      dcb.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+
+      var buffTextProgress = Graphics.createBufferedBitmap({
+        // create an off-screen buffer with a palette of four colors
+        :width => startHand + progress,
+        :height => buffHeight,
+      }).get();
+      var dcbText = buffTextProgress.getDc();
+      dcbText.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+      dcbText.clear();
+      dcbText.setColor(
+        Properties.getValue("BackgroundColor"),
+        Graphics.COLOR_TRANSPARENT
+      );
+      dcbText.drawText(
+        flip ? -handLength / 2 + progress : startHand + handLength / 2,
+        buffHeight / 2,
+        font,
+        text,
+        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+      );
+
+      dcb.drawBitmap(
+        flip ? flipX(dc, startHand + progress, flip) : 0,
+        0,
+        buffTextProgress
+      );
+    }
+    return buff;
   }
 
   function createBuffedHand(
@@ -425,9 +579,7 @@ class AsapView extends WatchUi.WatchFace {
     handLength as Number,
     borderThickness as Number,
     lastData as Number,
-    font,
-    flip as Boolean,
-    showLabel as Boolean
+    flip as Boolean
   ) {
     var handThickness = buffHeight;
     //progress bar
@@ -458,73 +610,17 @@ class AsapView extends WatchUi.WatchFace {
         baseThickness
       );
     }
-   
-    dcb.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);   
 
-    drawProgress(dcb, startHand, handLength, handLength, handThickness,flip);
+    dcb.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
 
-
+    drawProgress(dcb, startHand, handLength, handLength, handThickness, flip);
     dcb.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-    if (data != null && showLabel) {
-      dcb.drawText(
-        flipX(dc, startHand + handLength / 2, flip),
-        buffHeight / 2,
-        font,
-        data.getLabel(),
-        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-      );
-    }
-
-    drawProgress(dcb, startHand, handLength, progress, handThickness,flip);
-   
-
-    dcb.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-
-    // if (borderThickness != 0) {
-    //   dcb.setPenWidth(borderThickness);
-
-    //   dcb.drawRoundedRectangle(
-    //     startHand,
-    //     buffHeight / 2 - handThickness / 2,
-    //     handLength,
-    //     handThickness,
-    //     handThickness / 2
-    //   );
-    // }
-
-    if (data != null && showLabel) {
-      var buffText = Graphics.createBufferedBitmap({
-        // create an off-screen buffer with a palette of four colors
-        :width => startHand + progress ,
-        :height => buffHeight,
-      }).get();
-      var dcbText = buffText.getDc();
-      dcbText.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
-      dcbText.clear();
-      dcbText.setColor(
-        Properties.getValue("BackgroundColor"),
-        Graphics.COLOR_TRANSPARENT
-      );
-      dcbText.drawText(
-        flip
-          ? -handLength / 2 + progress 
-          : startHand + handLength / 2,
-        buffHeight / 2,
-        font,
-        data.getLabel(),
-        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-      );
-
-      dcb.drawBitmap(
-        flip ? flipX(dc, startHand + progress , flip) : 0,
-        0,
-        buffText
-      );
-    }
+    drawProgress(dcb, startHand, handLength, progress, handThickness, flip);
 
     return buff;
   }
+
   function flipX(dc as Dc, x as Number, flip as Boolean) {
     if (flip) {
       var res = dc.getWidth() - x;
@@ -541,51 +637,56 @@ class AsapView extends WatchUi.WatchFace {
     handThickness as Number,
     flip as Boolean
   ) {
-
     dc.setAntiAlias(true);
     // draw Half Circle
 
     var points = getCirclePoints(
-      flipX(dc,startHand + handThickness / 2,flip),
-      dc.getHeight() / 2,
-       handThickness / 2,
-      40,
-      flip?flipX(dc,min(startHand+progress, startHand+handThickness / 2),true): 0,
-      flip?flipX(dc,0,true)
-      :
-      min(startHand+progress, startHand+handThickness / 2)
-      
-    );
-    if (points.size() >0){    
-    dc.fillPolygon(points as Array);
-    }
-
-
-    if (startHand + progress > startHand + handThickness / 2) {
-      dc.fillRectangle(flipX(dc,startHand + handThickness /2 ,flip), 0, (flip?-1:1) *min(progress -handThickness / 2, handLength - handThickness) , handThickness);
-    }
-
-
-if ( startHand + handLength - handThickness/2 < startHand + progress) {
-    points = getCirclePoints(
-      flipX(dc,startHand+ handLength - handThickness / 2,flip),
+      flipX(dc, startHand + handThickness / 2, flip),
       dc.getHeight() / 2,
       handThickness / 2,
       40,
-      flip?flipX(dc,startHand+progress ,true):startHand+ handLength - handThickness / 2,
-      flip?flipX(dc,startHand+ handLength - handThickness / 2,true): startHand+progress  
-         
-      
+      flip
+        ? flipX(
+            dc,
+            min(startHand + progress, startHand + handThickness / 2),
+            true
+          )
+        : 0,
+      flip
+        ? flipX(dc, 0, true)
+        : min(startHand + progress, startHand + handThickness / 2)
     );
-    if (points.size() >0){    
-    dc.fillPolygon(points as Array);
+    if (points.size() > 0) {
+      dc.fillPolygon(points as Array);
     }
-}
 
+    if (startHand + progress > startHand + handThickness / 2) {
+      dc.fillRectangle(
+        flipX(dc, startHand + handThickness / 2, flip),
+        0,
+        (flip ? -1 : 1) *
+          min(progress - handThickness / 2, handLength - handThickness),
+        handThickness
+      );
+    }
 
-    // draw Rectangle
-
-    // draw endHalfCircle
+    if (startHand + handLength - handThickness / 2 < startHand + progress) {
+      points = getCirclePoints(
+        flipX(dc, startHand + handLength - handThickness / 2, flip),
+        dc.getHeight() / 2,
+        handThickness / 2,
+        40,
+        flip
+          ? flipX(dc, startHand + progress, true)
+          : startHand + handLength - handThickness / 2,
+        flip
+          ? flipX(dc, startHand + handLength - handThickness / 2, true)
+          : startHand + progress
+      );
+      if (points.size() > 0) {
+        dc.fillPolygon(points as Array);
+      }
+    }
   }
   function getCirclePoints(
     x as Number,
@@ -604,8 +705,8 @@ if ( startHand + handLength - handThickness/2 < startHand + progress) {
       var py = y + r * Math.sin(angle);
 
       // Create a pair [px, py]
-      if (minX <=  px .toNumber() &&  px .toNumber() <= maxX )     {        
-        points.add([px.toNumber(),py.toNumber()]);
+      if (minX <= px.toNumber() && px.toNumber() <= maxX) {
+        points.add([px.toNumber(), py.toNumber()]);
       }
     }
 

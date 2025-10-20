@@ -5,7 +5,7 @@ class Battery extends Datas {
 
 var days,hours;
   function initialize() {
-    Datas.initialize(Rez.Drawables.battery, "BAT");
+    Datas.initialize(Rez.Drawables.battery, "BAT","BATTERY");
   }
 
     function hasProgress(){

@@ -17,10 +17,11 @@ class Sport extends Datas {
   function initialize(
     rez as $.Toybox.Lang.ResourceId?,
     label as String,
+    longlabel as String,
     sportType as Activity.Sport,
     dataType as Number
   ) {
-    Datas.initialize(rez, label);
+    Datas.initialize(rez, label,longlabel);
     self.sportType = sportType;
     self.dataType = dataType;
 
@@ -301,10 +302,12 @@ class SportThisWeek extends Sport {
   function initialize(
     rez as $.Toybox.Lang.ResourceId?,
     label as String,
+        longLabel as String,
+
     sportType as Activity.Sport,
     dataType as Number
   ) {
-    Sport.initialize(rez, label, sportType, dataType);
+    Sport.initialize(rez, label,longLabel, sportType, dataType);
   }
 
   function getString() as String {
@@ -334,10 +337,11 @@ class SportThisMonth extends Sport {
   function initialize(
     rez as $.Toybox.Lang.ResourceId?,
     label as String,
+    longLabel as String,
     sportType as Activity.Sport,
     dataType as Number
   ) {
-    Sport.initialize(rez, label, sportType, dataType);
+    Sport.initialize(rez, label,longLabel, sportType, dataType);
   }
 
   function getString() as String {
@@ -373,12 +377,13 @@ class SportThisWeekMonth extends Sport {
   function initialize(
     rez as $.Toybox.Lang.ResourceId?,
     label as String,
+    longLabel as String,
     sportType as Activity.Sport,
     dataType as Number
   ) {
-    Sport.initialize(rez, label, sportType, dataType);
-    week = new SportThisWeek(rez, label, sportType, dataType);
-    month = new SportThisMonth(null, "", sportType, dataType);
+    Sport.initialize(rez, label,longLabel, sportType, dataType);
+    week = new SportThisWeek(rez, label, longLabel,sportType, dataType);
+    month = new SportThisMonth(null, "","", sportType, dataType);
   }
 
   function getString() as String {
@@ -414,6 +419,7 @@ class RunningThisWeek extends SportThisWeek {
     SportThisWeek.initialize(
       Rez.Drawables.running,
       "R",
+      "Run Week",
       Activity.SPORT_RUNNING,
       1
     );
@@ -426,6 +432,7 @@ class RunningThisMonth extends SportThisMonth {
     SportThisMonth.initialize(
       Rez.Drawables.running,
       "R",
+      "Run Month",
       Activity.SPORT_RUNNING,
       1
     );
@@ -439,6 +446,7 @@ class RunningThisWeekMonth extends SportThisWeekMonth {
     SportThisWeekMonth.initialize(
       Rez.Drawables.running,
       "R",
+      "Run W/M",
       Activity.SPORT_RUNNING,
       1
     );
@@ -453,7 +461,7 @@ class CustoSport1ThisWeek extends SportThisWeek {
     SportThisWeek.initialize(
       getRezFromSport(sport, 1),
       "",
-
+      "#1 Week",
       sport,
       Properties.getValue("custoSport1Data") as Number
     );
@@ -467,6 +475,8 @@ class CustoSport1ThisMonth extends SportThisMonth {
     SportThisMonth.initialize(
       getRezFromSport(sport, 1),
       "",
+            "#1 Month",
+
       sport,
       Properties.getValue("custoSport1Data") as Number
     );
@@ -482,6 +492,8 @@ class CustoSport1ThisWeekMonth extends SportThisWeekMonth {
     SportThisWeekMonth.initialize(
       getRezFromSport(sport, 1),
       "",
+      "#1 Week/Month",
+
       sport,
       Properties.getValue("custoSport1Data") as Number
     );
@@ -496,6 +508,7 @@ class CustoSport2ThisWeek extends SportThisWeek {
     SportThisWeek.initialize(
       getRezFromSport(sport, 2),
       "",
+      "#2 week" ,
       sport,
       Properties.getValue("custoSport2Data") as Number
     );
@@ -510,6 +523,8 @@ class CustoSport2ThisMonth extends SportThisMonth {
     SportThisMonth.initialize(
       getRezFromSport(sport, 2),
       "",
+            "#2 Month" ,
+
       sport,
       Properties.getValue("custoSport2Data") as Number
     );
@@ -525,6 +540,8 @@ class CustoSport2ThisWeekMonth extends SportThisWeekMonth {
     SportThisWeekMonth.initialize(
       getRezFromSport(sport, 2),
       "",
+            "#2 week/month" ,
+
       sport,
       Properties.getValue("custoSport2Data") as Number
     );

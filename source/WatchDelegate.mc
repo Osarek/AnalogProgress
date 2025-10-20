@@ -19,10 +19,10 @@ class WatchDelegate extends Ui.WatchFaceDelegate {
 
     System.println("pressed");
 
-    App.Properties.setValue(
-      "ShowSideText",
-      !(App.Properties.getValue("ShowSideText") as Lang.Boolean)
-    );
+    // App.Properties.setValue(
+    //   "ShowSideText",
+    //   !(App.Properties.getValue("ShowSideText") as Lang.Boolean)
+    // );
     return true;
   }
 }

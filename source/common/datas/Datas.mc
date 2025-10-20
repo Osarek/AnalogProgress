@@ -11,13 +11,15 @@ class Datas {
   hidden var icon as BitmapResource?;
   hidden var rez as $.Toybox.Lang.ResourceId?;
   hidden var label as String?;
+  hidden var longLabel as String?;
 
-  function initialize(rez as $.Toybox.Lang.ResourceId?, label as String) {
+  function initialize(rez as $.Toybox.Lang.ResourceId?, label as String, longLabel as String) {
     self.rez = rez;
     if (rez != null) {
       self.icon = lr(rez);
     }
     self.label = label;
+    self.longLabel = longLabel;
   }
 
   function canBeBuffered() as Boolean{
@@ -56,6 +58,9 @@ class Datas {
   function getLabel() as String? {
     return label;
   }
+    function getLongLabel() as String? {
+    return longLabel;
+  }
   function getIcon() as BitmapResource {
     return icon;
   }
@@ -66,4 +71,6 @@ class Datas {
     $.Toybox.Application.ResourceReferenceType {
     return Application.loadResource(rez);
   }
+
+  
 }

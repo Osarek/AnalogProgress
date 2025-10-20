@@ -1,7 +1,7 @@
 class Status extends Datas {
   static const CODE = 6;
   function initialize() {
-    Datas.initialize(Rez.Drawables.phone_off, "DISCONECTED");
+    Datas.initialize(Rez.Drawables.phone_off, "STAT","Status");
   }
 
   function prependIcon() {

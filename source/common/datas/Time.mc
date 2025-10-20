@@ -2,7 +2,7 @@ import Toybox.Application;
 
 class Time extends Datas {
   function initialize() {
-    Datas.initialize(null, "");
+    Datas.initialize(null, "","");
   }
 
   function prependIcon() {
